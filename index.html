@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRODUK - Review & Informasi Produk Terlengkap</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 10px auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 4rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-card svg {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            fill: var(--accent-color);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+            padding: 4rem 0;
+            margin: 4rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .about-image {
+            text-align: center;
+        }
+        
+        .about-image svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-color);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="10" width="80" height="80" rx="15" fill="#e74c3c" />
+                        <circle cx="35" cy="35" r="10" fill="white" />
+                        <circle cx="65" cy="35" r="10" fill="white" />
+                        <path d="M25 65 Q50 80 75 65" stroke="white" stroke-width="8" fill="none" />
+                    </svg>
+                    <h1>PRODUK</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Review</a></li>
+                        <li><a href="#">Kategori</a></li>
+                        <li><a href="#">Perbandingan</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Ulasan Produk Terpercaya dan Terlengkap</h2>
+                <p>Temukan informasi terbaru tentang berbagai produk dari teknologi, rumah tangga, hingga gaya hidup. Dapatkan panduan pembelian yang tepat dengan review mendalam dari para ahli kami.</p>
+                <a href="#" class="btn">Jelajahi Review</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mengapa Memilih PRODUK?</h2>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 10 L90 30 L90 70 L50 90 L10 70 L10 30 Z" fill="none" stroke="#3498db" stroke-width="5"/>
+                        <circle cx="50" cy="50" r="20" fill="none" stroke="#3498db" stroke-width="5"/>
+                        <circle cx="50" cy="50" r="5" fill="#3498db"/>
+                    </svg>
+                    <h3>Review Mendalam</h3>
+                    <p>Kami memberikan analisis mendalam terhadap setiap produk dengan pengujian yang komprehensif untuk memastikan kualitas informasi yang kami berikan.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="20" width="60" height="60" rx="10" fill="none" stroke="#3498db" stroke-width="5"/>
+                        <path d="M30 40 L45 55 L70 30" fill="none" stroke="#3498db" stroke-width="8"/>
+                    </svg>
+                    <h3>Perbandingan Produk</h3>
+                    <p>Dapatkan perbandingan langsung antara berbagai produk sejenis untuk membantu Anda membuat keputusan pembelian yang tepat.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 15 L85 40 L85 75 L15 75 L15 40 Z" fill="none" stroke="#3498db" stroke-width="5"/>
+                        <circle cx="50" cy="45" r="10" fill="#3498db"/>
+                        <path d="M40 60 L60 60 M50 60 L50 75" stroke="#3498db" stroke-width="5"/>
+                    </svg>
+                    <h3>Panduan Pembelian</h3>
+                    <p>Tips dan panduan lengkap untuk memilih produk terbaik sesuai kebutuhan dan budget Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tentang Situs PRODUK</h2>
+                    <p>PRODUK adalah platform terpercaya yang didedikasikan untuk memberikan ulasan, informasi, dan panduan pembelian produk terbaru dan terpopuler di pasaran. Didirikan pada tahun 2015, kami telah berkembang menjadi sumber informasi terkemuka bagi konsumen yang mencari panduan pembelian yang objektif dan mendalam.</p>
+                    <p>Tim ahli kami terdiri dari profesional dengan latar belakang beragam di bidang teknologi, desain, dan analisis produk. Kami melakukan pengujian menyeluruh terhadap setiap produk yang kami ulas, memastikan bahwa informasi yang kami berikan akurat, terkini, dan relevan dengan kebutuhan pengguna.</p>
+                    <p>Visi kami adalah menjadi mitra terpercaya bagi konsumen dalam membuat keputusan pembelian yang tepat. Misi kami adalah memberikan konten berkualitas tinggi yang mendidik, menginspirasi, dan memberdayakan pembaca untuk memilih produk yang sesuai dengan kebutuhan dan preferensi mereka.</p>
+                    <p>Kami memahami bahwa setiap konsumen memiliki kebutuhan yang unik, itulah sebabnya kami menyajikan informasi dari berbagai perspektif dan menyediakan alat perbandingan yang memudahkan Anda menemukan produk yang tepat. Kepercayaan pembaca adalah prioritas utama kami, dan kami berkomitmen untuk menjaga objektivitas dalam setiap ulasan yang kami publikasikan.</p>
+                </div>
+                <div class="about-image">
+                    <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="50" y="50" width="300" height="200" rx="10" fill="#ecf0f1" stroke="#3498db" stroke-width="3"/>
+                        <circle cx="100" cy="120" r="30" fill="#3498db" opacity="0.7"/>
+                        <rect x="150" y="90" width="150" height="20" rx="5" fill="#2c3e50"/>
+                        <rect x="150" y="120" width="120" height="15" rx="5" fill="#2c3e50" opacity="0.7"/>
+                        <rect x="150" y="145" width="100" height="15" rx="5" fill="#2c3e50" opacity="0.5"/>
+                        <rect x="150" y="170" width="80" height="15" rx="5" fill="#2c3e50" opacity="0.3"/>
+                        <path d="M80 80 L80 40 L120 40 L120 60 L100 60 L100 80 Z" fill="#e74c3c"/>
+                        <path d="M320 80 L320 40 L280 40 L280 60 L300 60 L300 80 Z" fill="#e74c3c"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Kata Pengguna Kami</h2>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Situs PRODUK telah membantu saya membuat keputusan pembelian yang tepat selama bertahun-tahun. Ulasan mereka mendalam dan jujur."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AS</div>
+                        <div>
+                            <h4>Ahmad Santoso</h4>
+                            <p>Pengguna Setia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Perbandingan produk di situs ini sangat membantu. Saya selalu memeriksanya sebelum membeli gadget baru."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DS</div>
+                        <div>
+                            <h4>Dewi Sari</h4>
+                            <p>Tech Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Panduan pembelian mereka menyelamatkan saya dari membuat kesalahan mahal. Sekarang saya selalu berkonsultasi dengan PRODUK terlebih dahulu."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RS</div>
+                        <div>
+                            <h4>Rizky Setiawan</h4>
+                            <p>Pembeli Cerdas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>PRODUK</h3>
+                    <p>Situs review dan informasi produk terpercaya. Membantu Anda membuat keputusan pembelian yang tepat sejak 2015.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Kategori</h3>
+                    <ul>
+                        <li><a href="#">Elektronik</a></li>
+                        <li><a href="#">Gadget</a></li>
+                        <li><a href="#">Rumah Tangga</a></li>
+                        <li><a href="#">Otomotif</a></li>
+                        <li><a href="#">Fashion</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kontak</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ikuti Kami</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 PRODUK. Semua hak dilindungi undang-undang.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
